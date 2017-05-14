@@ -1,4 +1,4 @@
-import os
+import os, random
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tango_with_django_project.settings')
 
@@ -46,19 +46,23 @@ def populate():
             print("- {0} - {1}".format(str(c), str(p)))
 
     a = Category.objects.get(name="Python")
-    a.views = 128
-    a.likes = 64
+    a.views +=10
+    a.likes +=6
     a.save()
 
     a = Category.objects.get(name="Django")
-    a.views = 64
-    a.likes = 32
+    a.views +=50
+    a.likes +=22
     a.save()
 
-    a = Category.objects.get(name="Django")
-    a.views = 32
-    a.likes = 16
+    a = Category.objects.get(name="Other Frameworks")
+    a.views +=20
+    a.likes +=13
     a.save()
+
+    for abc in Page.objects.all():
+        abc.views = int(random.random()*1000)
+        abc.save()
 
 
 def add_cat(name):

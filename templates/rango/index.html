@@ -6,18 +6,39 @@
 </head>
 <body>
 <h1>Rango says...</h1>
+<div>hey there partner!</div>
 
 <div>
 
-    hey there partner!<br/>
-    <strong>{{ boldmessage }}</strong> <br/>
-    <br/>
-    <a href="/rango/about">Know more about Rango project</a>
-    <br/><br/>
+<h1>Most Liked Categories</h1>
+    {% if liked_categories %}
+        <ul>
+            {% for category in liked_categories %}
+                <li><a href="/rango/category/{{ category.slug}}">{{ category.name }}</a></li>
+            {% endfor %}
+
+        </ul>
+    {% else %}
+        <strong>There are no categories present right now!</strong>
+    {% endif %}
+
+<h1>Most Viewed Pages</h1>
+    {% if liked_categories %}
+        <ul>
+            {% for page in viewed_pages %}
+                <li><a href="{{page.url }}">{{ page.title }}</a></li>
+            {% endfor %}
+
+        </ul>
+    {% else %}
+        <strong>There are no categories present right now!</strong>
+    {% endif %}
 </div>
-<div>
 
-    <img src="{% static 'images/rango.jpg' %}" alt="Picture of rango" height="400px" width="400px">
+
+<div>
+<a href="/rango/about/">About Rango</a><br /><br />
+<img src="{% static 'images/rango.jpg' %}" alt="Picture of rango" height="400px" width="400px">
 </div>
 </body>
 </html>
