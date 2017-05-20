@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+
 from rango import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.index,name='index'),
+    url(r'^$', views.index, name='index'),
     url(r'^rango/', include('rango.urls'))
 ]
